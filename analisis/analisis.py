@@ -19,7 +19,6 @@ def obtener_coeficientes(s: str) -> dict[int, float]:
             if '**' in elem:
                 # tiene exponente
                 coef_s, exp_s = re.split(r'\*\*', elem)
-                print(f'Coeficiente: "{coef_s}", exponente: "{exp_s}"')
 
                 # obtener el valor del exponente
                 exp = int(exp_s)
