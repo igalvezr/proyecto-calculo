@@ -1,3 +1,4 @@
+from analisis.es_cero import es_cero
 from analisis.Funcion import Funcion
 
 
@@ -9,4 +10,5 @@ def derivar(func: Funcion) -> Funcion:
             continue
         derivada.coeficientes[expon - 1] = coef * expon
     
+    # Ordenar los coeficientes
     return derivada

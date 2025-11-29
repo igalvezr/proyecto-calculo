@@ -1,14 +1,16 @@
 import re
 
+from analisis.Funcion import Funcion
 
-def obtener_coeficientes(s: str) -> dict[int, float]:
+
+def obtener_coeficientes(s: str) -> Funcion:
     # deshacerse de los espacios primero
     s = s.replace(' ', '')
     elementos = re.split(r"(?<=\d)?(?=[+-])", s)
 
     elementos = [elem for elem in elementos if elem]
 
-    coeficientes = dict()
+    coeficientes: dict[int, float] = dict()
     for elem in elementos:
         signo = -1 if '-' in elem else 1
         elem = elem.replace('-', '')
@@ -49,7 +51,9 @@ def obtener_coeficientes(s: str) -> dict[int, float]:
             # es un término independiente
             valor = float(elem) * signo
             coeficientes[0] = valor
+
+    #print('En análisis: ', coeficientes)
     
-    return coeficientes
+    return Funcion(coeficientes=coeficientes)
 
 
