@@ -9,6 +9,7 @@ Corresponde al trabajo realizado por los integrantes indicados en el reporte, pe
 
 - python 3.13.7
 - matplotlib
+- numpy
 
 La instalación del intérprete de python depende del sistema. Para **windows**, se puede obtener desde la página oficial [python.org](python.org) o desde la tienda de microsoft; para sistemas **Linux**, puede encontrarse utilizando el gestor de paquetes de la plataforma. Una vez instalado, se puede verificar la instalación utilizando el comando:
 > `$ python --version`
@@ -17,7 +18,7 @@ Que debería imprimir la versión de python instalada.
 
 La instalación de las dependencias se realiza con el comando:
 
-> `$ pip install matplotlib`
+> `$ pip install matplotlib numpy`
 
 ## Instalación - proyecto
 Para ejecutar el proyecto, y una vez teniendo el intérprete de python disponible en el sistema, así como las dependencias del proyecto, se debe clonar el presente repositorio usando git:

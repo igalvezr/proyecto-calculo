@@ -3,19 +3,24 @@ from analisis.Funcion import Funcion
 import numpy as np
 
 def obtener_raices(funcion: Funcion) -> list[float]:
-    coeficientes = funcion.coeficientes
-    #print('En obtener_racies, coeficientes raw: ', coeficientes)
+    '''
+    Devuelve una lista con las raíces reales de la función proveída
+    '''
 
+    # Obtener los coeficientes de la función
+    coeficientes = funcion.coeficientes
+
+    # Si no hay coeficientes, no se puede proceder
     if not coeficientes:
         raise Exception("Función inválida")
     
-    # construir un arreglo de coeficinetes
+    # construir un arreglo de coeficientes
     coefs_arr = list(coeficientes.values())
-    #print ('En obtener_coeficientes, coeficientes de la función: ', coefs_arr)
+    # usar numpy para obtener las raíces de la función
     raices_complejas = np.roots(coefs_arr)
 
-    #print('En obtener_coeficientes, raices C de la función: ', raices_complejas)
     raices_reales = list()
+    # Filtrar las raíces complejas, dejar solo las reales
     for raiz in raices_complejas:
         if abs(raiz.imag) < 1e-9:
             raices_reales.append(round(raiz.real, 6))

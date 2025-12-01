@@ -4,15 +4,29 @@ from analisis.Funcion import Funcion
 
 
 def obtener_coeficientes(s: str) -> Funcion:
+    """
+    Toma un string representando una función polinómica,
+    y retorna un objeto Funcion con los datos
+    """
+
     # deshacerse de los espacios primero
     s = s.replace(' ', '')
+    # separar en una lista cada elemento, donde el punto de separación
+    # es un número seguido de un signo
     elementos = re.split(r"(?<=\d)?(?=[+-])", s)
 
+    # Tomar solo los elementos válidos, es decir, que no estén vacíos
     elementos = [elem for elem in elementos if elem]
 
+    # Inicializar un contenedor para el coeficiente de cada potencia
     coeficientes: dict[int, float] = dict()
+
+    # Iterar sobre cada uno de los elementos encontrados
     for elem in elementos:
+        # Extraer el signo del elemento
         signo = -1 if '-' in elem else 1
+
+        # Eliminar el símbolo del signo
         elem = elem.replace('-', '')
         elem = elem.replace('+', '')
         # analizar el tipo de término que se tiene

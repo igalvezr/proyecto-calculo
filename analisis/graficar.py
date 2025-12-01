@@ -7,16 +7,14 @@ from analisis.es_cero import es_cercano
 from analisis.raices import obtener_raices
 
 
-def __comparar_intervalos(intervalo: tuple[float, float]):
-    if intervalo[0] == -inf:
-        return intervalo[1]
-    elif tuple[1] == inf:
-        return intervalo[0]
-    else:
-        return (intervalo[1] + intervalo[0]) / 2
-
-
 def obtener_rango_de_impresion(puntos_notables: dict[TipoPuntos, list[tuple[float, float]]], funcion: Funcion) -> list[tuple[float, float]]:
+    '''
+    Devuelve el rango de datos, es decir, una cota superior y una inferior, para el rango de datos que se
+    han de evaluar como variable independiente para que el renderizado de la gráfica sea lógico.
+
+    Este criterio implica obtener los puntos mínimo y máximo de las raices y los puntos críticos, con tal de que
+    todos ellos se puedan observar en la gráfica.
+    '''
     # determinar cuales son los mas alejados
     puntos: list[tuple[float, float]] = list()
 
@@ -51,7 +49,9 @@ def obtener_rango_de_impresion(puntos_notables: dict[TipoPuntos, list[tuple[floa
 
 
 def graficar(funcion: Funcion, puntos_notables: dict[TipoPuntos, list[tuple[float, float]]], intervalos: list[tuple[tuple[float, float], int]]):
-
+    '''
+    Usa matplotlib para graficar todos los elementos de la función
+    '''
     fig, ax = plt.subplots()
 
     # Determinar el rango de numeros para graficar - 30% extra del ancho total de los intervalos

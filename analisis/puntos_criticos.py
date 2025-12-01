@@ -5,6 +5,9 @@ from colores import *
 
 
 def obtener_puntos_criticos(funcion: Funcion, derivada_1: Funcion, derivada_2: Funcion) -> dict[TipoPuntos, list[tuple[float, float]]]:
+    '''
+    Determina los puntos máximos, mínimos y de inflexión de la función proveída, usando la primera y segunda derivadas.
+    '''
 
     # Paso 2: obtener los máximos y mínimos
     print_green('\n# Paso 2: Obtener las raíces de f\'(x) para conocer los puntos críticos:')

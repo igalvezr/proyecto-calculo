@@ -4,11 +4,19 @@ from analisis.es_cero import es_cercano, es_cero
 
 
 class TipoPuntos(Enum):
+    '''
+    Enumeración representando los tipos de puntos notables
+    que se manejan
+    '''
     Maximo = 1
     Minimo = 2
     Inflexion = 3
 
 class Funcion:
+    '''
+    Objetos de esta clase representan una función polinómica. Proveen métodos
+    para obtener sus distintas representaciones, así como algunos datos importantes
+    '''
     coeficientes: dict[int, float]
     puntos_criticos: list[tuple[TipoPuntos, float]]
     raices: list[float]
@@ -22,6 +30,9 @@ class Funcion:
         self.establecer_coeficientes(coeficientes)
     
     def establecer_coeficientes(self, coeficientes: dict[int, float] = {}):
+        '''
+        Se encarga de normalizar el proceso de insertar los coeficientes de la función
+        '''
         self.coeficientes = coeficientes
 
         # Normalizar los coeficientes
@@ -35,15 +46,20 @@ class Funcion:
         self.coeficientes = dict(sorted(self.coeficientes.items(), reverse=True))
     
     def evaluar(self, x: float) -> float:
+        '''
+        Permite evaluar la función para cierto valor x
+        '''
         resultado = 0
         for expon, coef in self.coeficientes.items():
             resultado += x**expon * coef
         return resultado
     
     def __str__(self) -> str:
+        # Forma "debug" de representar la función como string
         return f'función: [Coeficientes: {self.coeficientes}, raices: {len(self.raices)}]'
     
     def pretty(self) -> str:
+        # Manera presentable para imprimir la función en terminal
         symbol = ''
 
         for expon, coef in self.coeficientes.items():
@@ -56,7 +72,10 @@ class Funcion:
         
         return symbol
     
-    def obtener_coeficientes_no_nulos(self):
+    def obtener_coeficientes_no_nulos(self) -> dict[float, float]:
+        '''
+        Devuelve los coeficientes no nulos de la función
+        '''
         coef_no_nulos = dict()
         for exp, coef in self.coeficientes.items():
             if not es_cero(coef):
